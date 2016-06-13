@@ -1,0 +1,23 @@
+{
+  "name": "wikipedia-viewer",
+  "version": "1.0.0",
+  "description": "A Wikipedia viewer created as part of freeCodeCamp's program",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/ncaron/wikipedia-viewer.git"
+  },
+  "author": "Niko Caron",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/ncaron/wikipedia-viewer/issues"
+  },
+  "homepage": "https://github.com/ncaron/wikipedia-viewer#readme",
+  "devDependencies": {
+    "browser-sync": "^2.13.0",
+    "gulp": "^3.9.1"
+  }
+}

@@ -1,10 +1,10 @@
 var search = function() {
-	var input = document.getElementById('input').value;
-	document.getElementById('input').value = '';
+	var input = $('#input').val();
+	$('#input').val('');
 };
 
-document.getElementById('input').addEventListener('keyup', function(event) {
+$('#input').keyup(function() {
 	if (event.keyCode == 13) {
-		document.getElementById('submit').click();
+		$('#submit').trigger('click');
 	}
 });

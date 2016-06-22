@@ -20,6 +20,8 @@ var search = function() {
 				});
 			}
 		});
+		// Displays results with jQuery Templating
+		$('#article-view').loadTemplate('#article-template', resultsArray);
 	});
 };
 

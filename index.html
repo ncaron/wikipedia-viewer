@@ -8,6 +8,7 @@
 	</head>
 
 	<body>
+		<h1>Wikipedia Search</h1>
 		<input id="input" type="search">
 		<button id="submit" onclick="search()">Submit</button>
 		<a href="https://en.wikipedia.org/wiki/Special:Random" target="_blank">
@@ -22,7 +23,7 @@
 
 		<!-- Article Template -->
 		<script type="text/html" id="article-template">
-			<h1 data-content="title"></h1>
+			<h2 data-content="title"></h2>
 			<p data-content="extract"></p>
 			<a data-href="url" target="_blank">More Info</a>
 		</script>

@@ -7,7 +7,7 @@ if(SEARCH_LIMIT > 100) {
 
 var search = function() {
 	var input = $('#input').val();
-	var searchUrl = 'https://en.wikipedia.org/w/api.php?action=opensearch&format=json&search=' + input + '&limit=' + SEARCH_LIMIT + '&warningsaserror=1&utf8=1';
+	var searchUrl = 'https://en.wikipedia.org/w/api.php?action=opensearch&format=json&search=' + input + '&limit=' + SEARCH_LIMIT + '&redirects=resolve&warningsaserror=1&utf8=1';
 	var resultsArray = [];
 	$('#input').val('');
 
@@ -18,12 +18,12 @@ var search = function() {
 		dataType: 'jsonp'
 	})
 	.done(function(data) {
-		for(var i = 0; i < SEARCH_LIMIT; i++) {
+		for(var i = 0; i < data[1].length; i++) {
 			resultsArray.push({
 				'title': data[1][i],
 				'extract': data[2][i],
 				'url': data[3][i]
-			})
+			});
 		}
 		// Displays results with jQuery Templating
 		displayArticles(resultsArray);
@@ -31,8 +31,14 @@ var search = function() {
 };
 
 var displayArticles = function(resultsArray) {
-	// Displays results with jQuery Templating
-	$('#article-view').loadTemplate('#article-template', resultsArray);
+	var num_pages = Math.ceil(resultsArray.length / 10);
+	// Displays results with Pagination.js and jQuery Templating
+	$('#pages').pagination({
+		dataSource: resultsArray,
+		callback: function(data, pagination) {
+			$('#article-view').loadTemplate('#article-template', data);
+		}
+	});
 };
 
 // Triggers the search function when 'enter' key is pressed
